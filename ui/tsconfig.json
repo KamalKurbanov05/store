@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "target": "es5", // компилируем ts код в js код версии ES5
+    "module": "esnext",
+    "jsx": "react-jsx",
+  }
+}
