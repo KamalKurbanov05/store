@@ -18,6 +18,11 @@
       "react/prop-types": "off"
     },
     "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [".js",".jsx",".ts", ".tsx"]
+        }
+      },
       "react": {
         "pragma": "React",
         "version": "detect"

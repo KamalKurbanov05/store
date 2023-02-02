@@ -13,7 +13,7 @@ const paths = {
 
 module.exports = {
   context: paths.src,
-  entry: './index.js',  // точка входа в приложение, наш src/index.ts файл, названием итогового бандла будет имя свойства - app
+  entry: './index.ts',  // точка входа в приложение, наш src/index.ts файл, названием итогового бандла будет имя свойства - app
   output: {
     path: paths.dist,  // путь для результатов сборки 
     // размещаться итоговый бандл, папка dist в корне приложения
@@ -21,7 +21,7 @@ module.exports = {
     clean: true, // Очищает директорию dist перед обновлением бандла
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: [ '.tsx', '.ts', '.js' ],
   },
 devtool: 'inline-source-map', // дополнительные настройки и загрузчики не требуются, хотя даже официальный рецепт от TypeScript рекомендует source-map-loader и поле в tsconfig - "sourceMap": true 
 devServer: {
@@ -32,19 +32,6 @@ devServer: {
 },
   module: {
     rules: [
-      {
-        test: /\.m?js?ts$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ],
-            plugins: ['@babel/plugin-proposal-class-properties']
-          }
-        }
-      },
       {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
@@ -60,9 +47,10 @@ devServer: {
         },
       },
       {
-        test: /\.ts$/,
-        loader: 'awesome-typescript-loader'
-        } // загрузчик для обработки файлов с расширением .ts
+        test: /\.ts(x?)$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
     ]
 },
 plugins: [
@@ -70,7 +58,7 @@ plugins: [
   new HtmlWebpackPlugin({
       template: './index.html'
   }),
-   // генерация html-файла на основе нашего шаблона
+    // генерация html-файла на основе нашего шаблона
   // new ForkTsCheckerWebpackPlugin({
     // async: false,
     // eslint: {
