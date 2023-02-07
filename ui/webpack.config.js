@@ -13,7 +13,7 @@ const paths = {
 
 module.exports = {
   context: paths.src,
-  entry: './index.ts',  // точка входа в приложение, наш src/index.ts файл, названием итогового бандла будет имя свойства - app
+  entry: './index.js',  // точка входа в приложение, наш src/index.ts файл, названием итогового бандла будет имя свойства - app
   output: {
     path: paths.dist,  // путь для результатов сборки 
     // размещаться итоговый бандл, папка dist в корне приложения
@@ -47,7 +47,7 @@ devServer: {
         },
       },
       {
-        test: /\.ts(x?)$/,
+        test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
