@@ -19,7 +19,7 @@ export const fetchItems = createAsyncThunk(
     }
 )
 
-interface IItem {
+export interface IItem {
     userId: number;
     readonly id: number;
     title: string;
