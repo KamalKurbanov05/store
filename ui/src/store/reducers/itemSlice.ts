@@ -9,8 +9,7 @@ export const fetchItems = createAsyncThunk(
     'fetch data',
      async (_, thunkApi) => {
         try {
-            console.log('we here!');
-            const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+            const response = await fetch('http://localhost:3000/items');
             return response.json();
             // Array.isArray(items) && dispatch(addItems(items));
         } catch (err) {
