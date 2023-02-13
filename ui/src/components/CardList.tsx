@@ -1,10 +1,10 @@
 import { useAppSelector } from "../store/hooks"
-import { Card } from "./Card";
+import { KCard } from "./Card";
 
 export const CardList = () => {
     const { items } = useAppSelector((state) => state.itemSlice);
 
-    if(!items.length) {
+    if(!items?.length) {
         return(
             <span>Loading...</span>
         )
@@ -13,7 +13,7 @@ export const CardList = () => {
     return(
         <ul style={{ display: "flex", flexWrap: "wrap" }}>
             {
-                items.map((item) => <Card key={item.id} {...item}/>)
+                items.map((item) => <KCard key={item.id} {...item}/>)
             }
         </ul>
     )
