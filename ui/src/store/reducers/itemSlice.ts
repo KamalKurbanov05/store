@@ -5,18 +5,18 @@ import { Dispatch } from 'react';
 
 
 
-export const fetchItems = createAsyncThunk(
-    'fetch data',
-     async (_, thunkApi) => {
-        try {
-            const response = await fetch('http://localhost:3000/items');
-            return response.json();
-            // Array.isArray(items) && dispatch(addItems(items));
-        } catch (err) {
-            console.log(err);
-        }
-    }
-)
+// export const fetchItems = createAsyncThunk(
+//     'fetch data',
+//      async (_, thunkApi) => {
+//         try {
+//             const response = await fetch('http://localhost:3000/items');
+//             return response.json();
+//             // Array.isArray(items) && dispatch(addItems(items));
+//         } catch (err) {
+//             console.log(err);
+//         }
+//     }
+// )
 
 export interface IItem {
     userId: number;
@@ -41,11 +41,11 @@ const itemSlice = createSlice({
             state.items = action.payload
         }
     },
-    extraReducers: {
-        [fetchItems.fulfilled.type]: (state, action: PayloadAction<IItem[]>) => {
-            state.items = action.payload
-        }
-    }
+    // extraReducers: {
+    //     [fetchItems.fulfilled.type]: (state, action: PayloadAction<IItem[]>) => {
+    //         state.items = action.payload
+    //     }
+    // }
 })
 
 
