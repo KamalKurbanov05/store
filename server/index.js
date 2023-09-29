@@ -21,8 +21,8 @@ app.use(errorHandle);
 
 const start = async () => {
     try {
-        await sequelize.authenticate();
-        await sequelize.sync()
+        await authenticate();
+        await sync()
         app.listen(PORT, () => console.log('port => :', PORT, "asdfasdf"));
     } catch(e) {
         console.log('errr->',e)
